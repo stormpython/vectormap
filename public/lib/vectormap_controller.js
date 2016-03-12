@@ -1,8 +1,8 @@
 var _ = require('lodash');
 
-var module = require('ui/modules').get('tagcloud');
+var module = require('ui/modules').get('vectormap');
 
-module.controller('CloudController', function ($scope) {
+module.controller('VectorMapController', function ($scope) {
   $scope.$watch('esResponse', function (resp) {
     if (!resp) {
       $scope.data = null;
@@ -15,7 +15,10 @@ module.controller('CloudController', function ($scope) {
     var buckets = resp.aggregations[mapCodeAggId].buckets;
 
     $scope.data = buckets.map(function (bucket) {
-      return { [bucket.key]: metricsAgg.getValue(bucket) };
+      var obj = {};
+      obj[bucket.key] = metricsAgg.getValue(bucket);
+
+      return obj;
     });
 
     debugger;
