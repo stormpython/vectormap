@@ -1,6 +1,12 @@
 var _ = require('lodash');
 var $ = require('jquery');
 
+var maps = {
+  world: require('plugins/vectormap/lib/jvectormap/maps/map.world'),
+  usa: require('plugins/vectormap/lib/jvectormap/maps/map.usa'),
+  europe: require('plugins/vectormap/lib/jvectormap/maps/map.europe')
+};
+
 // jvectormap - version 2.0.3
 require('plugins/vectormap/lib/jvectormap/jquery-jvectormap.min');
 
@@ -43,7 +49,7 @@ module.directive('vectormap', function () {
 
       $('.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-label').remove();
       element.vectorMap({
-        map: scope.options.mapType,
+        map: maps[scope.options.mapType],
         regionStyle: { initial: { fill: '#8c8c8c' }},
         zoomOnScroll: false,
         backgroundColor: null,

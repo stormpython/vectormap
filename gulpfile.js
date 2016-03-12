@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var path = require('path');
-var path = require('path');
 var mkdirp = require('mkdirp');
 var Rsync = require('rsync');
 var Promise = require('bluebird');

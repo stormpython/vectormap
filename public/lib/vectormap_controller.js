@@ -2,7 +2,7 @@ var _ = require('lodash');
 
 var module = require('ui/modules').get('vectormap');
 
-module.controller('VectorMapController', function ($scope) {
+module.controller('VectormapController', function ($scope) {
   $scope.$watch('esResponse', function (resp) {
     if (!resp) {
       $scope.data = null;
