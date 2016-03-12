@@ -1,10 +1,10 @@
-const _ = require('lodash');
-const $ = require('jquery');
+var _ = require('lodash');
+var $ = require('jquery');
 
 // jvectormap - version 2.0.3
 require('plugins/vectormap/lib/jvectormap/jquery-jvectormap.min');
 
-const module = require('ui/modules').get('vectormap');
+var module = require('ui/modules').get('vectormap');
 
 module.directive('vectorMap', function () {
   function link (scope, element) {

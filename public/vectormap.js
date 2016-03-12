@@ -3,8 +3,8 @@ require('plugins/vectormap/lib/vectormap_controller.js');
 require('plugins/vectormap/lib/vectormap_directive.js');
 
 function VectorMapProvider(Private) {
-  const TemplateVisType = Private(require('ui/template_vis_type/TemplateVisType'));
-  const Schemas = Private(require('ui/Vis/Schemas'));
+  var TemplateVisType = Private(require('ui/template_vis_type/TemplateVisType'));
+  var Schemas = Private(require('ui/Vis/Schemas'));
 
   return new TemplateVisType({
     name: 'vectormap',

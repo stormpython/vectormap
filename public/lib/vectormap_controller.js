@@ -1,6 +1,6 @@
-const _ = require('lodash');
+var _ = require('lodash');
 
-const module = require('ui/modules').get('tagcloud');
+var module = require('ui/modules').get('tagcloud');
 
 module.controller('CloudController', function ($scope) {
   $scope.$watch('esResponse', function (resp) {
@@ -9,10 +9,10 @@ module.controller('CloudController', function ($scope) {
       return;
     }
 
-    const mapCodeAggId = _.first(_.pluck($scope.vis.aggs.bySchemaName['segment'], 'id'));
-    const metricsAgg = _.first($scope.vis.aggs.bySchemaName['metric']);
+    var mapCodeAggId = _.first(_.pluck($scope.vis.aggs.bySchemaName['segment'], 'id'));
+    var metricsAgg = _.first($scope.vis.aggs.bySchemaName['metric']);
 
-    const buckets = resp.aggregations[mapCodeAggId].buckets;
+    var buckets = resp.aggregations[mapCodeAggId].buckets;
 
     $scope.data = buckets.map(function (bucket) {
       return { [bucket.key]: metricsAgg.getValue(bucket) };
