@@ -66,7 +66,7 @@ gulp.task('lint', function (done) {
     .pipe(eslint.failOnError());
 });
 
-const batch = require('gulp-batch');
+var batch = require('gulp-batch');
 
 gulp.task('dev', ['sync'], function (done) {
   watch(['package.json', 'index.js', 'public/**/*', 'server/**/*'], batch(function(events, done) {
