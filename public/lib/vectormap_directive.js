@@ -6,7 +6,7 @@ require('plugins/vectormap/lib/jvectormap/jquery-jvectormap.min');
 
 var module = require('ui/modules').get('vectormap');
 
-module.directive('vectorMap', function () {
+module.directive('vectormap', function () {
   function link (scope, element) {
 
     element.html('<center><img src="img/load_big.gif"></center>');

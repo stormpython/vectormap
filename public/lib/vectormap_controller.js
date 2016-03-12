@@ -20,7 +20,5 @@ module.controller('VectorMapController', function ($scope) {
 
       return obj;
     });
-
-    debugger;
   });
 });
