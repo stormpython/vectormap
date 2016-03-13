@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "vectormap",
   "version": "0.1.0",
   "devDependencies": {
     "bluebird": "3.1.1",

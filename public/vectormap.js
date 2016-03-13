@@ -10,16 +10,14 @@ function VectormapProvider(Private) {
     name: 'vectormap',
     title: 'Vector Map',
     description: 'Displays a map of shaded regions using a field containing a 2 letter country ' +
-       ', or US state, code. Regions with more hit are shaded darker. Node that this does use the' +
-       ' Elasticsearch terms facet, so it is important that you set it to the correct field.',
+      ', or US state, code. Regions with more hits are shaded darker. Note that this does use the' +
+      ' Elasticsearch terms aggregation, so it is important that you set it to the correct field.',
     icon: 'fa-map',
     template: require('plugins/vectormap/vectormap.html'),
     params: {
       defaults: {
-        mapType: 'world',
-        colors: ['#A0E2E2', '#265656'],
-        exclude: [],
-        spyable: true
+        mapType: 'world_mill',
+        colors: ['#A0E2E2', '#265656']
       },
       editor: require('plugins/vectormap/vectormap_vis_params.html')
     },
@@ -39,7 +37,7 @@ function VectormapProvider(Private) {
         group: 'buckets',
         name: 'segment',
         icon: 'fa fa-map',
-        title: 'Map code',
+        title: 'Geocode',
         min: 1,
         max: 1,
         aggFilter: ['terms', 'significant_terms']

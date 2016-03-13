@@ -9,16 +9,15 @@ module.controller('VectormapController', function ($scope) {
       return;
     }
 
-    var mapCodeAggId = _.first(_.pluck($scope.vis.aggs.bySchemaName['segment'], 'id'));
+    var geoCodeAggId = _.first(_.pluck($scope.vis.aggs.bySchemaName['segment'], 'id'));
     var metricsAgg = _.first($scope.vis.aggs.bySchemaName['metric']);
 
-    var buckets = resp.aggregations[mapCodeAggId].buckets;
+    var buckets = resp.aggregations[geoCodeAggId].buckets;
 
-    $scope.data = buckets.map(function (bucket) {
-      var obj = {};
-      obj[bucket.key] = metricsAgg.getValue(bucket);
+    $scope.data = {};
 
-      return obj;
+    buckets.forEach(function (bucket) {
+      $scope.data[bucket.key] = metricsAgg.getValue(bucket);
     });
   });
 });
