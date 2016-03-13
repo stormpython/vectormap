@@ -20,9 +20,9 @@ module.directive('vectormap', function () {
       render();
     });
 
-    //scope.$watch(onSizeChange, _.debounce(function () {
-    //  render();
-    //}, 250), true);
+    scope.$watch(onSizeChange, _.debounce(function () {
+      render();
+    }, 250), true);
 
     // Re-render if the window is resized
     angular.element(window).bind('resize', function(){
