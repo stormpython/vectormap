@@ -17,7 +17,7 @@ module.controller('VectormapController', function ($scope) {
     $scope.data = {};
 
     buckets.forEach(function (bucket) {
-      $scope.data[bucket.key] = metricsAgg.getValue(bucket);
+      $scope.data[bucket.key.toUpperCase()] = metricsAgg.getValue(bucket);
     });
   });
 });
