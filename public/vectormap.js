@@ -17,7 +17,10 @@ function VectormapProvider(Private) {
     params: {
       defaults: {
         mapType: 'world_mill',
-        colors: ['#A0E2E2', '#265656']
+        minColor: '#A0E2E2',
+        maxColor: '#265656',
+        zoomOnScroll: false,
+        tipNumberFormat: 'number'
       },
       editor: require('plugins/vectormap/vectormap_vis_params.html')
     },
