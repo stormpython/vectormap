@@ -13,7 +13,9 @@ Kibana 4.3+
 ```$ bin/kibana plugin -i vectormap -u https://github.com/stormpython/vectormap/archive/master.zip```
 
 ### Disclosure
-This repo is in its early stages. 
+This repo is in its early stages.
+
+This repo contains source code minified from the original source code [jvectormap](https://github.com/bjornd/jvectormap), which is licensed under [AGPL](https://github.com/bjornd/jvectormap/blob/master/LICENSE-AGPL).
 
 ### Issues
 Please file issues [here](https://github.com/stormpython/vectormap/issues).
