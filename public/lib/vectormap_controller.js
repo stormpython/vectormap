@@ -10,9 +10,11 @@ module.controller('VectormapController', function ($scope) {
     }
 
     var geoCodeAggId = _.first(_.pluck($scope.vis.aggs.bySchemaName['segment'], 'id'));
+    var geoCodAgg = _.first($scope.vis.aggs.bySchemaName['segment']);
     var metricsAgg = _.first($scope.vis.aggs.bySchemaName['metric']);
     var buckets = resp.aggregations[geoCodeAggId] && resp.aggregations[geoCodeAggId].buckets;
 
+    $scope.filterField = geoCodAgg._opts.params.field;
     $scope.data = {};
 
     buckets.forEach(function (bucket) {

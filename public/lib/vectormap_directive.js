@@ -8,8 +8,9 @@ require('plugins/vectormap/lib/jvectormap/jquery-jvectormap.css');
 
 var module = require('ui/modules').get('vectormap');
 
-module.directive('vectormap', function () {
+module.directive('vectormap', function (Private, getAppState, courier) {
   function link (scope, element) {
+    const pushFilter = Private(require('ui/filter_bar/push_filter'))(getAppState());
 
     function onSizeChange() {
       return {
@@ -75,6 +76,23 @@ module.directive('vectormap', function () {
 
             var count = _.isUndefined(scope.data[code]) ? 0 : scope.data[code];
             el.html(el.html() + ": " + numeral(count).format(displayFormat(scope.options.tipNumberFormat)));
+          },
+          onRegionClick: function(event, code) {
+            if (!scope.$parent.filterField) {
+              return;
+            }
+            var count = _.isUndefined(scope.data[code]) ? 0 : scope.data[code];
+            if (count !== 0) {
+              courier.indexPatterns.getIds().then(function (indices) {
+                const field = scope.$parent.filterField;
+                const filter = {"match" : {}};
+                filter.match[field] = code;
+
+                for(var i = 0; i < indices.length; i++) {
+                  pushFilter(filter, false, indices[i]);
+                }
+              });
+            }
           }
         });
       });
