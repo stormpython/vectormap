@@ -46,6 +46,15 @@ module.directive('vectormap', function () {
       render();
     });
 
+    function isObjectEmpty(map) {
+      for(var key in map) {
+        if (map.hasOwnProperty(key)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
     function render() {
       element.css({
         height: element.parent().height(),
@@ -58,6 +67,9 @@ module.directive('vectormap', function () {
       $('.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-label').remove();
 
       require(['plugins/vectormap/lib/jvectormap/maps/map.' + scope.options.mapType], function () {
+        if(!scope.data || isObjectEmpty(scope.data)) {
+          return;
+        }
         element.vectorMap({
           map: scope.options.mapType,
           regionStyle: { initial: { fill: '#8c8c8c' }},
